@@ -1,9 +1,9 @@
-<div *ngIf="tracks.length">
-    <h2>Top Tracks for</h2>
-    <ul>
-        <li *ngFor="let t of tracks">
-            <img [src]="t.album.images[2]?.url" width="64" alt="" />
-            {{ t.name }}
-        </li>
-    </ul>
+<div *ngFor="let album of albums">
+    <img [src]="album.images[1]?.url">
+    <h1>{{ album.name }}</h1>
+    <div *ngFor="let track of getTracksForAlbum(album.id)">
+        <div *ngIf="album.album_type == 'album'">
+            <h4>{{ track.name }}</h4>
+        </div>
+    </div>
 </div>

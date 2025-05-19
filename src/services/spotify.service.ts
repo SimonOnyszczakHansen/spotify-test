@@ -36,20 +36,20 @@ export class SpotifyService {
     );
   }
 
-  searchArtist(name: string): Observable<any> {
+  getArtistAlbums(artistId: string): Observable<any> {
     return this.withAuthHeaders(headers =>
-      this.http.get(`${this.apiUrl}/search`, {
-        headers,
-        params: { q: name, type: 'artist', limit: '1' }
-      })
+      this.http.get(
+        `${this.apiUrl}/artists/${artistId}/albums`,
+        { headers, params: { market: 'US', limit: 50, include_groups: 'album,single' } }
+      )
     );
   }
 
-  getArtistTopTracks(artistId: string): Observable<any> {
+  getAlbumTracks(albumId: string): Observable<any> {
     return this.withAuthHeaders(headers =>
       this.http.get(
-        `${this.apiUrl}/artists/${artistId}/top-tracks`,
-        { headers, params: { market: 'US' } }
+        `${this.apiUrl}/albums/${albumId}/tracks`,
+        { headers, params: { market: 'US', limit: 50, include_groups: 'album, single'} }
       )
     );
   }
