@@ -1,9 +1,4 @@
-<div *ngFor="let album of albums">
-    <img [src]="album.images[1]?.url">
-    <h1>{{ album.name }}</h1>
-    <div *ngFor="let track of getTracksForAlbum(album.id)">
-        <div *ngIf="album.album_type == 'album'">
-            <h4>{{ track.name }}</h4>
-        </div>
-    </div>
+<div class="container">
+    <img src="../../assets/IvanBaggrund.jpg" alt="background image">
+    <h1>Ivan Ravn</h1>
 </div>

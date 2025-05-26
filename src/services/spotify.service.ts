@@ -40,7 +40,7 @@ export class SpotifyService {
     return this.withAuthHeaders(headers =>
       this.http.get(
         `${this.apiUrl}/artists/${artistId}/albums`,
-        { headers, params: { market: 'US', limit: 50, include_groups: 'album,single' } }
+        { headers, params: { market: 'DK', limit: 50, include_groups: 'album,single' } }
       )
     );
   }
@@ -49,8 +49,14 @@ export class SpotifyService {
     return this.withAuthHeaders(headers =>
       this.http.get(
         `${this.apiUrl}/albums/${albumId}/tracks`,
-        { headers, params: { market: 'US', limit: 50, include_groups: 'album, single'} }
+        { headers, params: { market: 'DK', limit: 50 } }
       )
     );
+  }
+
+  getArtist(artistId: string): Observable<any> {
+    return this.withAuthHeaders(headers =>
+      this.http.get(`${this.apiUrl}/artists/${artistId}`, { headers })
+    )
   }
 }

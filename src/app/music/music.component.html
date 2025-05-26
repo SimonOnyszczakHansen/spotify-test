@@ -1,0 +1,9 @@
+<section class="albums-grid">
+    <div *ngFor="let album of albums" class="album-card">
+        <img [src]="album.images[1]?.url" alt="Album cover" class="album-image">
+        <div class="track-list">
+            <h2 *ngFor="let track of getTracksForAlbum(album.id)" class="track-name">{{ track.name }}</h2>
+        </div>
+        <p class="release-date">{{ album.release_date | date:'mediumDate' }}</p>
+    </div>
+</section>
