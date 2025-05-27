@@ -56,7 +56,7 @@ export class SpotifyService {
 
   getArtist(artistId: string): Observable<any> {
     return this.withAuthHeaders(headers =>
-      this.http.get(`${this.apiUrl}/artists/${artistId}`, { headers })
+      this.http.get(`${this.apiUrl}/artists/${artistId}`, { headers, params: { market: 'DK', limit: 50} })
     )
   }
 }

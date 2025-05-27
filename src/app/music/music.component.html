@@ -1,5 +1,5 @@
-<section class="albums-grid">
-    <div *ngFor="let album of albums" class="album-card">
+<section class="albums-container">
+    <div *ngFor="let album of albums" class="album">
         <img [src]="album.images[1]?.url" alt="Album cover" class="album-image">
         <div class="track-list">
             <h2 *ngFor="let track of getTracksForAlbum(album.id)" class="track-name">{{ track.name }}</h2>

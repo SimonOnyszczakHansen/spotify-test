@@ -25,7 +25,7 @@
 .navbar h1 {
     font-size: 2rem;
     margin: 0;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .navbar ul {
@@ -38,6 +38,11 @@
     justify-content: center;
 }
 
-.navbar li:hover {
+.navbar li {
+    opacity: 75%;
     cursor: pointer;
+}
+
+.navbar li:hover {
+    opacity: 100%;
 }

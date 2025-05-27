@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { forkJoin, of } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { forkJoin, of, from } from 'rxjs';
+import { switchMap, map, mergeMap, toArray } from 'rxjs/operators';
 import { SpotifyService } from '../../services/spotify.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-music',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './music.component.html',
   styleUrl: './music.component.css'
 })
-export class MusicComponent {
+export class MusicComponent implements OnInit {
   albums: any[] = [];
-  tracks: any[] = []; 
+  tracks: any[] = [];
 
   constructor(private spotifyService: SpotifyService) { }
 
@@ -24,26 +25,31 @@ export class MusicComponent {
 
   loadAlbums(artistId: string) {
     this.spotifyService.getArtistAlbums(artistId).pipe(
-      switchMap((albumsResp: any) => {
+      switchMap((albumsResp: { items: any[] }) => {
         this.albums = albumsResp.items;
-        console.log(this.albums)
-        const calls = this.albums.map(album =>
-          this.spotifyService.getAlbumTracks(album.id).pipe(
-            map((resp: any) =>
-              resp.items.map((track: any) => ({ ...track, album }))
-            )
-          )
+        return from(this.albums).pipe(
+          mergeMap(
+            album =>
+              this.spotifyService.getAlbumTracks(album.id).pipe(
+                map((resp: { items: any[] }) =>
+                  resp.items.map((track: any) => ({ ...track, album }))
+                )
+              ),
+            1
+          ),
+          toArray()
         );
-
-        return calls.length ? forkJoin(calls) : of([]);
       }),
       map((arrays: any[][]) => arrays.flat())
-    )
-      .subscribe({
-        next: allTracks => this.tracks = allTracks,
-        error: err => console.error('Error loading tracks', err)
-      });
+    ).subscribe({
+      next: allTracks => {
+        this.tracks = allTracks;
+      },
+      error: err => console.error(err)
+    });
   }
+  
+
 
   getTracksForAlbum(albumId: string): any[] {
     return this.tracks.filter(t => t.album.id === albumId);
