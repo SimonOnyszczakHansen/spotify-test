@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background: linear-gradient(to bottom, #000000ef, #ffffff00);
+    background: linear-gradient(to bottom, var(--black), var(--transparent));
     width: 100vw;
     z-index: 99;
 }
@@ -39,10 +39,12 @@
 }
 
 .navbar li {
-    opacity: 75%;
+    color: var(--lightgrey);
     cursor: pointer;
+    letter-spacing: 0.5;
 }
 
 .navbar li:hover {
-    opacity: 100%;
+    color: var(--white);
+    transition: color 250ms linear;
 }

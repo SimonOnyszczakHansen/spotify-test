@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="track-window">
+        <table class="track-table">
+            <tbody>
+                <tr *ngFor="let track of tracks" class="track-row" (click)="selectTrack(track)"
+                    [class.selected]="track === selectedTrack">
+                    <td class="index">{{ track.listIndex }}</td>
+                    <td class="title">
+                        <div class="title-cell">
+                            <img *ngIf="track.albumImage" [src]="track.albumImage" alt="{{ track.albumName }} cover"
+                                class="album-art" />
+                            <div class="track-name">{{ track.name }}</div>
+                        </div>
+                    </td>
+                    <td class="duration">{{ track.duration }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="description-window">
+        <div *ngIf="!selectedTrack">
+            <h1>Vælg en sang</h1>
+        </div>
+        <div *ngIf="selectedTrack">
+            <h1>{{ selectedTrack.name }}</h1>
+            <p>{{ selectedTrack.description }}</p>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

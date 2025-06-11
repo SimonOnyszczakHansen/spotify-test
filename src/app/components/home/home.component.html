@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="hero">
+        <img src="../../assets/IvanBaggrund.jpg" alt="background image">
+        <h1>Ivan Ravn</h1>
+    </div>
+    <div class="content">
+        <div class="stats-container">
+            <div class="stats">
+                <div class="stat-number">{{ tracks.length }}</div>
+                <div class="stat-title">udgivet sange</div>
+            </div>
+            <div class="stats">
+                <div class="stat-number">{{ artist.followers.total | number }}</div>
+                <div class="stat-title">Følgere</div>
+            </div>
+            <div class="stats">
+                <div class=stat-number>{{ artist.popularity }}%</div>
+                <div class="stat-title">Popularitetsscore</div>
+            </div>
+        </div>
+        <ng-container *ngIf="getLatestRelease() as latest">
+            <div class="latest-release">
+                <h2 class="title">Seneste Udgivelse</h2>
+                <div class="card">
+                    <img *ngIf="latest.images?.length" [src]="latest.images[0].url" [alt]="latest.name"/>
+                    <div class="info">
+                        <h3>{{ latest.name }}</h3>
+                        <p>{{ latest.release_date | date: 'mediumDate' }}</p>
+                        <button (click)="openSpotify(latest.external_urls.spotify)">Lyt nu</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptor
 
 import { appConfig    } from './app/app.config';
 import { AppComponent } from './app/app.component';
-import { RateLimitInterceptor } from './app/rate-limiter.interceptor';
+import { RateLimitInterceptor } from './app/interceptor/rate-limiter.interceptor';
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
