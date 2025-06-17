@@ -10,4 +10,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class ContactComponent {
 
+
+  sendMail() {
+    window.location.href = 'mailto:ivanravn@ivanravn.com'
+  }
 }

@@ -39,12 +39,26 @@
 }
 
 .navbar li {
-    color: var(--lightgrey);
+    position: relative;
+    color: var(--white);
     cursor: pointer;
     letter-spacing: 0.5;
+    padding-bottom: 5px;
+    font-weight: 400;
 }
 
-.navbar li:hover {
-    color: var(--white);
-    transition: color 250ms linear;
+.navbar li:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: all 0.3s ease;
+    transform: translateX(-50%)
+}
+
+.navbar li:hover:after {
+    width: 100%;
 }

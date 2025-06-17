@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 8rem 4rem;
+    align-items: center;
+}
+
+.card {
+    background: var(--background);
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 38rem;
+    border: 1px solid var(--grey-border);
+    height: auto;
+}
+
+.title {
+    margin: 0 1.5rem 1rem;
+    text-align: center;
+    font-size: 2.4rem;
+    padding-top: 4rem;
+}
+
+.date {
+    margin: 0 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--grey-border);
+    border-width: 80%;
+    color: var(--grey-text);
+    padding-bottom: 2rem;
+}
+
+.content {
+  flex-grow: 1;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  padding: 0 1.5rem 2rem;
+  color: var(--text);
+}
+
+.button {
+    display: block;
+    margin: 0 auto 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+}

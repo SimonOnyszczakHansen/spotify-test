@@ -2,8 +2,9 @@
 
 :root {
     --black: #000;
-    --grey: #555;
-    --lightgrey: #8b8b8b;
+    --grey-border: #555;
+    --grey-text: #8b8b8b;
+    --lightgrey: #adadad;
     --white: #fff;
     --transparent: #00000000;
     --background: #121212;
@@ -19,8 +20,8 @@ body {
     padding: 0;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-}
 
-::-webkit-scrollbar {
-    display: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }

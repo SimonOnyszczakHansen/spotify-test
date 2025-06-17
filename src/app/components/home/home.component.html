@@ -6,22 +6,22 @@
     <div class="content">
         <div class="stats-container">
             <div class="stats">
-                <div class="stat-number">{{ tracks.length }}</div>
-                <div class="stat-title">udgivet sange</div>
+                <div class="stat-number" appInView>{{ tracks.length }}</div>
+                <div class="stat-title" appInView>udgivet sange</div>
             </div>
             <div class="stats">
-                <div class="stat-number">{{ artist.followers.total | number }}</div>
-                <div class="stat-title">Følgere</div>
+                <div class="stat-number" appInView>{{ artist.followers.total | number }}</div>
+                <div class="stat-title" appInView>Følgere</div>
             </div>
             <div class="stats">
-                <div class=stat-number>{{ artist.popularity }}%</div>
-                <div class="stat-title">Popularitetsscore</div>
+                <div class=stat-number appInView>{{ artist.popularity }}%</div>
+                <div class="stat-title" appInView>Popularitetsscore</div>
             </div>
         </div>
         <ng-container *ngIf="getLatestRelease() as latest">
             <div class="latest-release">
-                <h2 class="title">Seneste Udgivelse</h2>
-                <div class="card">
+                <h2 class="title" appInView>Seneste Udgivelse</h2>
+                <div class="card" appInView>
                     <img *ngIf="latest.images?.length" [src]="latest.images[0].url" [alt]="latest.name"/>
                     <div class="info">
                         <h3>{{ latest.name }}</h3>

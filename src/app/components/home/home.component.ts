@@ -5,12 +5,13 @@ import { from } from 'rxjs';
 import { switchMap, map, mergeMap, toArray } from 'rxjs/operators';
 import { SpotifyService } from '../../../services/spotify.service';
 import { FooterComponent } from "../footer/footer.component";
+import { InViewDirective } from '../../directive/in-view.directive';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent],
+  imports: [CommonModule, FormsModule, FooterComponent, InViewDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -47,7 +48,6 @@ export class HomeComponent implements OnInit {
                   resp.items.map((track: any) => ({ ...track, album }))
                 )
               ),
-            1
           ),
           toArray()
         );
@@ -56,14 +56,13 @@ export class HomeComponent implements OnInit {
     ).subscribe({
       next: allTracks => {
         this.tracks = allTracks;
-        console.log(this.tracks)
       },
       error: err => console.error(err)
     });
   }
 
   getLatestRelease(): any | null {
-    if(!this.albums || this.albums.length === 0) {
+    if (!this.albums || this.albums.length === 0) {
       return null
     }
     return this.albums.reduce((prev, curr) => {
