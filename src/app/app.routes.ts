@@ -5,6 +5,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { NewsComponent } from './components/news/news.component';
 import { ConcertsComponent } from './components/concerts/concerts.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'hjem', pathMatch: 'full'},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path: 'om', component: AboutComponent},
     {path: 'pressemeddelse', component: NewsComponent},
     {path: 'koncerter', component: ConcertsComponent},
+    {path: 'admin', component: AdminDashboardComponent},
     {path: 'callback', component: HomeComponent},
 ];

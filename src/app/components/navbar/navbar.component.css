@@ -30,12 +30,12 @@
 
 .navbar ul {
     display: flex;
+    align-items: center;
     text-align: center;
     list-style: none;
     font-weight: 400;
     font-size: 1.1rem;
     gap: 2rem;
-    justify-content: center;
 }
 
 .navbar li {
@@ -61,4 +61,14 @@
 
 .navbar li:hover:after {
     width: 100%;
+}
+
+.admin-button {
+    padding: 0.6rem 1.2rem;
+    background-color: var(--white);
+    color: var(--black);
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
 }
